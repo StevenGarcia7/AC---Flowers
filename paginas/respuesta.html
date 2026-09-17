@@ -66,45 +66,57 @@
 
   <script src="../js/main.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefiereMenosMovimiento) return;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const capa = document.querySelector('#capa-confeti');
-      const emojis = ['🌻', '❤️', '✨', '⭐'];
-      const totalConfeti = 46;
-      let creados = 0;
+    const capa = document.querySelector('#capa-confeti');
+    if (!capa) return;
 
-      const intervalo = setInterval(() => {
-        if (creados >= totalConfeti) {
-          clearInterval(intervalo);
-          return;
-        }
-        crearPiezaDeConfeti();
-        creados++;
-      }, 90);
+    const emojis = ['🌻', '❤️', '✨', '⭐', '💛', '💚', '🌸'];
+    const colores = ['#f2c744', '#4a9c6d', '#d4af37', '#e8a4c0', '#7ec8a3', '#f1d78c', '#ff6b8a'];
 
-      function crearPiezaDeConfeti() {
-        const pieza = document.createElement('span');
-        pieza.className = 'confeti-item';
+    // Lluvia fuerte al entrar
+    for (let i = 0; i < 70; i++) {
+      setTimeout(() => crearPieza(), i * 45);
+    }
+
+    // Sigue cayendo unos segundos
+    const intervalo = setInterval(crearPieza, 90);
+    setTimeout(() => clearInterval(intervalo), 7000);
+
+    function crearPieza() {
+      const pieza = document.createElement('span');
+      pieza.className = 'confeti-item';
+
+      if (Math.random() > 0.35) {
+        // Emoji
         pieza.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-        const izquierda = Math.random() * 100;
-        const duracion = 4 + Math.random() * 3;
-        const giroInicial = Math.random() * 360;
-        const tamano = 1.1 + Math.random() * 1.1;
-
-        pieza.style.left = `${izquierda}vw`;
-        pieza.style.fontSize = `${tamano}rem`;
-        pieza.style.animationDuration = `${duracion}s`;
-        pieza.style.setProperty('--giro-inicial', `${giroInicial}deg`);
-
-        capa.appendChild(pieza);
-        setTimeout(() => pieza.remove(), duracion * 1000 + 200);
+        pieza.style.fontSize = (1.1 + Math.random() * 1.3) + 'rem';
+      } else {
+        // Pedacito de color
+        const w = 6 + Math.random() * 9;
+        pieza.style.width = w + 'px';
+        pieza.style.height = (w * 0.7 + Math.random() * 8) + 'px';
+        pieza.style.background = colores[Math.floor(Math.random() * colores.length)];
+        pieza.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
       }
-    });
-  </script>
+
+      const izquierda = Math.random() * 100;
+      const duracion = 3.2 + Math.random() * 3.5;
+      const giro = Math.random() * 360;
+      const deriva = (Math.random() - 0.5) * 120; // se mueve un poco a los lados
+
+      pieza.style.left = izquierda + 'vw';
+      pieza.style.animationDuration = duracion + 's';
+      pieza.style.setProperty('--giro-inicial', giro + 'deg');
+      pieza.style.setProperty('--deriva', deriva + 'px');
+
+      capa.appendChild(pieza);
+      setTimeout(() => pieza.remove(), duracion * 1000 + 400);
+    }
+  });
+</script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
