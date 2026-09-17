@@ -1,25 +1,5 @@
 /* =========================================================
-   MAIN.JS
-   Lógica compartida por TODAS las páginas del sitio:
-
-   1. Fondo de galaxia (estrellas en <canvas> + partículas CSS)
-   2. Menú de navegación (hamburguesa en móvil + bloqueo de
-      secciones aún no desbloqueadas)
-   3. Revelado de frases al entrar en pantalla
-   4. Reproductor de música discreto
-   5. Utilidades compartidas (efecto máquina de escribir),
-      expuestas en `window.FloresAmarillas` para que las
-      páginas individuales (comienzo.js, cambios.js, etc.)
-      puedan reutilizarlas.
-
-   Este archivo se incluye en index.html y en todas las
-   páginas dentro de /paginas/.
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   Namespace compartido. Cada página específica (contador.js,
-   flores.js, etc.) puede colgar sus propias funciones aquí
-   si necesita compartir algo con otro script.
+ 
    --------------------------------------------------------- */
 window.FloresAmarillas = window.FloresAmarillas || {};
 
@@ -39,10 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===========================================================
    1. FONDO DE GALAXIA
-   Dibuja estrellas que titilan suavemente en un <canvas> a
-   pantalla completa. Se recalculan al cambiar el tamaño de
-   la ventana. Si la persona prefiere menos movimiento, las
-   estrellas se dibujan una sola vez, sin parpadeo.
    =========================================================== */
 function iniciarGalaxia() {
   const lienzo = document.querySelector('.lienzo-estrellas');
@@ -101,10 +77,7 @@ function iniciarGalaxia() {
 }
 
 /* ===========================================================
-   2. PARTÍCULAS DORADAS (decorativas, CSS)
-   Se generan unos pocos elementos <span class="particula">
-   distribuidos al azar en el ancho de la pantalla. La
-   animación de flotado ya está definida en galaxia.css.
+   2. PARTÍCULAS DORADAS 
    =========================================================== */
 function crearParticulasDoradas() {
   const yaExisten = document.querySelector('.particula');
@@ -125,8 +98,6 @@ function crearParticulasDoradas() {
 
 /* ===========================================================
    3. MENÚ DE NAVEGACIÓN
-   Controla el menú hamburguesa en móvil y aplica el estado
-   de "bloqueado" a las secciones que aún no corresponden.
    =========================================================== */
 function iniciarMenu() {
   const nav = document.querySelector('.nav');
@@ -148,10 +119,7 @@ function iniciarMenu() {
   });
 }
 
-/* Marca con 🔒 y desactiva los enlaces del menú que llevan a
-   secciones todavía no desbloqueadas. La sección se
-   considera desbloqueada una vez que la persona acierta la
-   fecha en la pantalla de INICIO (ver js/desbloqueo.js). */
+/*  */
 function aplicarEstadoDeBloqueo() {
   const desbloqueado = localStorage.getItem(window.FloresAmarillas.CLAVE_DESBLOQUEO) === 'true';
   const enlaces = document.querySelectorAll('[data-requiere-desbloqueo]');
@@ -175,9 +143,7 @@ function aplicarEstadoDeBloqueo() {
     }
   });
 
-  // Si alguien intenta abrir directamente una página interna
-  // por URL sin haber desbloqueado, la regresamos amablemente
-  // al inicio en vez de mostrar la sección "vacía".
+ 
   const estaEnPaginaInterna = window.location.pathname.includes('/paginas/');
   const esPaginaDeRespuesta = window.location.pathname.includes('respuesta.html');
   if (estaEnPaginaInterna && !desbloqueado && !esPaginaDeRespuesta) {
@@ -190,11 +156,7 @@ function obtenerRutaInicio() {
 }
 
 /* ===========================================================
-   4. REVELADO DE FRASES AL HACER SCROLL
-   Cualquier elemento con la clase .frase aparece con un
-   pequeño desvanecimiento cuando entra en pantalla, usando
-   IntersectionObserver (más eficiente que escuchar "scroll").
-   =========================================================== */
+   4. REVELADO DE FRASES AL HACER SCROLL */
 function iniciarRevelado() {
   const frases = document.querySelectorAll('.frase');
   if (!frases.length) return;
@@ -216,10 +178,7 @@ function iniciarRevelado() {
 
 /* ===========================================================
    5. REPRODUCTOR DE MÚSICA
-   Controla play/pausa y volumen del elemento <audio>. Si el
-   navegador bloquea el autoplay (lo normal), simplemente
-   queda pausado hasta que la persona presione play.
-   =========================================================== */
+ */
 function iniciarReproductor() {
   const audio = document.querySelector('#audio-musica');
   const boton = document.querySelector('.reproductor__boton');
@@ -251,9 +210,7 @@ function iniciarReproductor() {
 
 /* ===========================================================
    6. UTILIDAD COMPARTIDA: EFECTO MÁQUINA DE ESCRIBIR
-   Otras páginas (por ejemplo comienzo.js) pueden llamar a
-   window.FloresAmarillas.escribirTexto(elemento, "texto")
-   para mostrar un texto letra por letra.
+   
    =========================================================== */
 window.FloresAmarillas.escribirTexto = function (elemento, texto, velocidadMs = 45) {
   if (!elemento) return Promise.resolve();
