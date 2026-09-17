@@ -61,9 +61,7 @@
         />
       </svg>
 
-      <!-- ✏️ EDITAR AQUÍ: frase final de esta sección. Se escribe
-           sola con efecto de máquina de escribir cuando la
-           estrella termina de encenderse. -->
+    
       <p class="frase-escrita" id="frase-final" aria-live="polite"></p>
       <span class="frase-final-texto" hidden>
         Desde ese primer mensaje, empezaste a hacer que una parte
@@ -86,12 +84,10 @@
 
   <script src="../js/main.js"></script>
 
-  <!-- Script propio de esta página: enciende la estrella y dispara
-       el efecto de máquina de escribir. No se creó js/comienzo.js
-       aparte porque es lógica corta y exclusiva de esta página. -->
+ 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Llenar el cielo de estrellas después de las 9:02
+     
       const cielo = document.querySelector('#cielo-estrellas');
       if (cielo) {
         setTimeout(() => {
