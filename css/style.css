@@ -835,7 +835,7 @@ button:focus-visible,
   100% { opacity: 0.7; transform: scale(1); }
 }
 
-/* ÚLTIMA PÁGINA — más íntima */
+/* ÚLTIMA PÁGINA  */
 .pregunta-intima .frase {
   font-size: clamp(1.4rem, 4vw, 2.1rem);
 }
@@ -865,4 +865,38 @@ button:focus-visible,
   height: 6px;
   border-radius: 50%;
   opacity: 0;
+}
+
+/* ===== CONFETI ===== */
+.confeti-capa {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  overflow: hidden;
+}
+
+.confeti-item {
+  position: absolute;
+  top: -50px;
+  will-change: transform, opacity;
+  animation-name: confeti-caer;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes confeti-caer {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--giro-inicial, 0deg));
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--deriva, 0px), 110vh, 0) rotate(calc(var(--giro-inicial, 0deg) + 800deg));
+    opacity: 0;
+  }
 }
