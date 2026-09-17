@@ -1,9 +1,6 @@
 /* =========================================================
    RESPONSIVE.CSS
-   Ajustes por tamaño de pantalla. El sitio ya es fluido
-   gracias a clamp() y unidades relativas en style.css; aquí
-   solo resolvemos los cambios estructurales (menú hamburguesa,
-   espaciados) que no pueden lograrse solo con clamp().
+
    ========================================================= */
 
 /* Tablet y móvil grande */
@@ -63,7 +60,7 @@
   }
 }
 
-/* Pantallas muy pequeñas: reducir un poco más el tipo de escala */
+/* Pantallas pequeñas */
 @media (max-width: 360px) {
   .frase {
     font-size: 1.5rem;
