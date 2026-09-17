@@ -1,0 +1,868 @@
+/* ESTILOS BASE — "Flores Amarillas" */
+
+/* 
+   1. FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+/* 2.  DISEÑO  */
+:root {
+  /* Paleta — base galaxia nocturna */
+  --color-vacio: #05050c;        /* negro base, casi absoluto */
+  --color-vacio-2: #0b0e1e;      /* negro azulado, para degradados */
+  --color-nebulosa: #12142a;     /* superficie ligeramente elevada */
+
+  /* Paleta — acentos cálidos */
+  --color-oro: #d4af37;          /* dorado principal */
+  --color-oro-claro: #f1d78c;    /* dorado claro, para brillos */
+  --color-amarillo: #f2c744;     /* amarillo flor */
+  --color-magenta: #e8a4c0;      /* rosa/magenta, uso muy puntual */
+
+  /* Paleta — verde (color favorito de ella) */
+  --color-verde: #4a9c6d;        /* verde principal */
+  --color-verde-claro: #7ec8a3;  /* verde suave para brillos */
+  --color-verde-oscuro: #2d6a4f; /* verde profundo */
+  --color-verde-tenue: rgba(74, 156, 109, 0.35);
+
+  /* Texto */
+  --color-marfil: #f5efe0;       /* texto principal sobre fondo oscuro */
+  --color-marfil-tenue: #b9b4a6; /* texto secundario */
+
+  /* Tipografía */
+  --fuente-display: 'Cormorant Garamond', Georgia, serif;
+  --fuente-cuerpo: 'Jost', 'Segoe UI', sans-serif;
+
+  /* Espaciado y forma */
+  --radio-suave: 2px;            /* casi sin redondeo: look elegante, no "app" */
+  --transicion-suave: 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transicion-rapida: 250ms ease;
+
+  /* Ancho de lectura cómodo */
+  --ancho-lectura: 42ch;
+}
+
+/* ---------------------------------------------------------
+   3. RESET BÁSICO
+   --------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-vacio);
+  color: var(--color-marfil);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p, figure {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Foco visible para navegación por teclado */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid var(--color-oro-claro);
+  outline-offset: 4px;
+}
+
+/* ---------------------------------------------------------
+   4. FONDO ------------------------ */
+
+.fondo-galaxia {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background:
+        radial-gradient(
+            ellipse at 70% 20%,
+            rgba(77, 64, 130, 0.25),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 30% 60%,
+            rgba(74, 156, 109, 0.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 50% 80%,
+            rgba(212, 175, 55, 0.08),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #020309 0%,
+            #050815 50%,
+            #020309 100%
+        );
+}
+
+/* ---------------------------------------------------------
+   5. BARRA DE NAVEGACIÓN
+    --------------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(to bottom, rgba(5, 5, 12, 0.85), transparent);
+  backdrop-filter: blur(2px);
+}
+
+.nav__marca {
+  font-family: var(--fuente-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--color-oro-claro);
+  text-decoration: none;
+}
+
+.nav__lista {
+  list-style: none;
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  margin: 0;
+  padding: 0;
+}
+
+.nav__enlace {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--color-marfil-tenue);
+  padding-bottom: 0.2rem;
+  transition: color var(--transicion-rapida);
+  white-space: nowrap;
+}
+
+.nav__enlace::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-oro);
+  transition: width var(--transicion-rapida);
+}
+
+.nav__enlace:hover,
+.nav__enlace:focus-visible {
+  color: var(--color-marfil);
+}
+
+.nav__enlace:hover::after,
+.nav__enlace:focus-visible::after {
+  width: 100%;
+}
+
+/* Secciones aún bloqueadas: se muestran, pero no se puede entrar */
+.nav__enlace--bloqueado {
+  color: rgba(185, 180, 166, 0.35);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav__enlace--bloqueado::after {
+  display: none;
+}
+
+.nav__candado {
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+}
+
+/* Botón de menú hamburguesa (solo visible en móvil, ver responsive.css) */
+.nav__hamburguesa {
+  display: none;
+  background: none;
+  border: none;
+  width: 28px;
+  height: 20px;
+  position: relative;
+}
+
+.nav__hamburguesa span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-marfil);
+  transition: transform var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.nav__hamburguesa span:nth-child(1) { top: 0; }
+.nav__hamburguesa span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.nav__hamburguesa span:nth-child(3) { bottom: 0; }
+
+.nav--abierto .nav__hamburguesa span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.nav--abierto .nav__hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+.nav--abierto .nav__hamburguesa span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* 6. SECCIONES GENERALES */
+.seccion {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+.seccion__contenido {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+/* Texto de apertura */
+.frase {
+  font-family: var(--fuente-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+  line-height: 1.35;
+  color: var(--color-marfil);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1200ms ease, transform 1200ms ease;
+}
+
+.frase.es-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.frase--enfasis {
+  font-style: italic;
+  color: var(--color-oro-claro);
+}
+
+.frase--pequena {
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  color: var(--color-marfil-tenue);
+  max-width: var(--ancho-lectura);
+}
+
+/* 7. BOTONES */
+.boton {
+  appearance: none;
+  border: 1px solid var(--color-oro);
+  background: transparent;
+  color: var(--color-oro-claro);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 2.2rem;
+  border-radius: var(--radio-suave);
+  transition: background var(--transicion-rapida), color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: var(--color-oro);
+  color: var(--color-vacio);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+}
+
+.boton--fantasma {
+  border-color: rgba(245, 239, 224, 0.25);
+  color: var(--color-marfil-tenue);
+}
+
+.boton--fantasma:hover,
+.boton--fantasma:focus-visible {
+  background: rgba(245, 239, 224, 0.08);
+  color: var(--color-marfil);
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------
+   8. SECCIÓN DE INICIO (hero)
+   --------------------------------------------------------- */
+.hero {
+  justify-content: center;
+}
+
+.hero__flor {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 0.5rem;
+  animation: flotar 6s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+
+/* 9. SECCIÓN DE DESBLOQUEO*/
+.desbloqueo__pregunta {
+  font-family: var(--fuente-display);
+  font-size: 1.4rem;
+  color: var(--color-marfil);
+}
+
+.selector-fecha {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.selector-fecha__grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.selector-fecha__etiqueta {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--color-marfil-tenue);
+}
+
+.selector-fecha__opciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 520px;
+}
+
+.selector-fecha__boton {
+  min-width: 2.6rem;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid rgba(245, 239, 224, 0.2);
+  background: transparent;
+  color: var(--color-marfil-tenue);
+  border-radius: var(--radio-suave);
+  font-size: 0.85rem;
+  transition: border-color var(--transicion-rapida), color var(--transicion-rapida), background var(--transicion-rapida);
+}
+
+.selector-fecha__boton:hover,
+.selector-fecha__boton:focus-visible {
+  border-color: var(--color-oro);
+  color: var(--color-marfil);
+}
+
+.selector-fecha__boton.es-seleccionado {
+  background: var(--color-oro);
+  border-color: var(--color-oro);
+  color: var(--color-vacio);
+}
+
+.desbloqueo__mensaje {
+  min-height: 1.4em;
+  font-size: 0.9rem;
+  color: var(--color-magenta);
+}
+
+.desbloqueo__mensaje.es-exito {
+  color: var(--color-amarillo);
+}
+
+/* Destello que acompaña el desbloqueo correcto */
+.destello {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(242, 199, 68, 0.25), transparent 60%);
+  opacity: 0;
+  z-index: 90;
+}
+
+.destello.es-activo {
+  animation: destello-pulso 900ms ease-out;
+}
+
+@keyframes destello-pulso {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* --10. REPRODUCTOR  */
+.reproductor {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(245, 239, 224, 0.15);
+  background: rgba(11, 14, 30, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+
+.reproductor__boton {
+  background: none;
+  border: none;
+  color: var(--color-oro-claro);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.reproductor__volumen {
+  width: 70px;
+  accent-color: var(--color-oro);
+}
+
+/* ---------------------------------------------------------
+   11. PIE DISCRETO
+   --------------------------------------------------------- */
+.pie {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  font-size: 0.75rem;
+  color: rgba(185, 180, 166, 0.5);
+}
+
+/* 12. "DONDE COMENZÓ TODO" */
+.fecha-destacada {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1200ms ease, transform 1200ms ease;
+}
+
+.fecha-destacada.es-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fecha-destacada__dia {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  letter-spacing: 0.04em;
+  color: var(--color-oro-claro);
+}
+
+.fecha-destacada__hora {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--color-marfil-tenue);
+}
+
+.estrella-ilustracion {
+  width: 64px;
+  height: 64px;
+  opacity: 0.3;
+  transform: scale(0.75);
+  transition: opacity 1100ms ease, transform 1100ms ease, filter 1100ms ease;
+}
+
+.estrella-ilustracion.es-encendida {
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 18px rgba(242, 199, 68, 0.65));
+  animation: estrella-pulso 2600ms ease-in-out infinite;
+}
+
+@keyframes estrella-pulso {
+  0%, 100% { filter: drop-shadow(0 0 14px rgba(242, 199, 68, 0.5)); }
+  50% { filter: drop-shadow(0 0 24px rgba(242, 199, 68, 0.75)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estrella-ilustracion.es-encendida {
+    animation: none;
+  }
+}
+
+/* Texto que se escribe letra por letra */
+.frase-escrita {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--color-marfil);
+  min-height: 2.8em;
+}
+/* =========================================================
+   NUEVOS ESTILOS — Verde, Cinnamoroll, Universo, Crecimiento
+   ========================================================= */
+
+/* Botones con acento verde sutil */
+.boton--verde {
+  border-color: var(--color-verde);
+  color: var(--color-verde-claro);
+}
+.boton--verde:hover,
+.boton--verde:focus-visible {
+  background: var(--color-verde);
+  color: var(--color-vacio);
+  box-shadow: 0 0 24px rgba(74, 156, 109, 0.35);
+}
+
+/* Partículas verdes */
+.particula--verde {
+  background: var(--color-verde-claro) !important;
+}
+
+/* CINNAMOROLL EASTER EGG */
+.cinnamoroll {
+  position: fixed;
+  z-index: 50;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 300ms ease, transform 400ms ease;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}
+.cinnamoroll:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+.cinnamoroll__burbuja {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  background: rgba(11, 14, 30, 0.92);
+  border: 1px solid rgba(245, 239, 224, 0.2);
+  color: var(--color-marfil);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease, transform 300ms ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.cinnamoroll.es-hablando .cinnamoroll__burbuja {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.cinnamoroll__burbuja::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(11, 14, 30, 0.92);
+}
+
+/* Posiciones posibles para easter eggs */
+.cinnamoroll--esquina {
+  bottom: 5.5rem;
+  left: 1.25rem;
+}
+.cinnamoroll--flotante {
+  top: 22%;
+  right: 8%;
+  animation: cinnamoroll-flotar 7s ease-in-out infinite;
+}
+.cinnamoroll--flor {
+  bottom: 28%;
+  left: 12%;
+}
+.cinnamoroll--musica {
+  bottom: 5.5rem;
+  right: 9rem;
+}
+
+@keyframes cinnamoroll-flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* SECCIÓN NUESTRO UNIVERSO */
+.universo-foto-contenedor {
+  position: relative;
+  width: min(280px, 70vw);
+  aspect-ratio: 1;
+  margin: 1.5rem auto;
+}
+.universo-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  box-shadow:
+    0 0 40px rgba(74, 156, 109, 0.25),
+    0 0 80px rgba(212, 175, 55, 0.15),
+    inset 0 0 30px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+.universo-anillo {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px solid rgba(74, 156, 109, 0.3);
+  animation: universo-rotar 40s linear infinite;
+  z-index: 1;
+}
+.universo-anillo::before {
+  content: '✦';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-oro-claro);
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+.universo-anillo--2 {
+  inset: -36px;
+  border-color: rgba(212, 175, 55, 0.2);
+  animation-duration: 55s;
+  animation-direction: reverse;
+}
+.universo-anillo--2::before {
+  content: '✧';
+  color: var(--color-verde-claro);
+}
+.universo-particula {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-verde-claro);
+  opacity: 0.6;
+  z-index: 3;
+  animation: universo-orbitar 12s linear infinite;
+}
+.universo-flor-mini {
+  position: absolute;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  z-index: 3;
+  animation: flotar 5s ease-in-out infinite;
+}
+
+@keyframes universo-rotar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes universo-orbitar {
+  from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+/* CRECIMIENTO DE FLOR (semilla → flor) */
+.crecimiento {
+  width: 180px;
+  height: 220px;
+  position: relative;
+  margin: 1rem auto;
+}
+.crecimiento__semilla {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 14px;
+  height: 18px;
+  background: #8b6914;
+  border-radius: 50% 50% 40% 40%;
+  transform: translateX(-50%) scale(1);
+  transition: all 800ms ease;
+  z-index: 1;
+}
+.crecimiento__raiz {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: #5a3a1a;
+  transform: translateX(-50%);
+  transition: height 900ms ease;
+  z-index: 0;
+}
+.crecimiento__tallo {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 4px;
+  height: 0;
+  background: var(--color-verde-oscuro);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: height 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+.crecimiento__hoja {
+  position: absolute;
+  width: 22px;
+  height: 14px;
+  background: var(--color-verde);
+  border-radius: 0 100% 0 100%;
+  opacity: 0;
+  transition: opacity 600ms ease, transform 700ms ease;
+  z-index: 3;
+}
+.crecimiento__hoja--izq {
+  left: calc(50% - 22px);
+  bottom: 70px;
+  transform: rotate(-35deg) scale(0);
+}
+.crecimiento__hoja--der {
+  left: 50%;
+  bottom: 95px;
+  transform: rotate(35deg) scale(0);
+  border-radius: 100% 0 100% 0;
+}
+.crecimiento__flor {
+  position: absolute;
+  left: 50%;
+  bottom: 140px;
+  width: 48px;
+  height: 48px;
+  transform: translateX(-50%) scale(0);
+  transition: transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 4;
+}
+.crecimiento.es-raiz .crecimiento__raiz { height: 18px; }
+.crecimiento.es-tallo .crecimiento__tallo { height: 120px; }
+.crecimiento.es-tallo .crecimiento__semilla { opacity: 0; transform: translateX(-50%) scale(0.3); }
+.crecimiento.es-hojas .crecimiento__hoja { opacity: 1; }
+.crecimiento.es-hojas .crecimiento__hoja--izq { transform: rotate(-35deg) scale(1); }
+.crecimiento.es-hojas .crecimiento__hoja--der { transform: rotate(35deg) scale(1); }
+.crecimiento.es-flor .crecimiento__flor { transform: translateX(-50%) scale(1); }
+
+/* Campo de flores al final */
+.campo-flores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+}
+.campo-flores.es-visible { opacity: 1; }
+.campo-flores span {
+  font-size: 1.4rem;
+  animation: flotar 4s ease-in-out infinite;
+  display: inline-block;
+}
+.campo-flores span:nth-child(odd) { animation-delay: 0.4s; }
+.campo-flores span:nth-child(3n) { animation-delay: 0.9s; color: var(--color-verde-claro); }
+
+/* SECCIÓN DESPUÉS DE LAS 9:02 */
+.noche-estrellada {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.noche-estrellada__cielo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.noche-estrellada__estrella-nueva {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #f5efe0;
+  border-radius: 50%;
+  opacity: 0;
+  animation: aparecer-estrella 1.2s ease forwards;
+}
+
+@keyframes aparecer-estrella {
+  0% { opacity: 0; transform: scale(0); }
+  60% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* ÚLTIMA PÁGINA — más íntima */
+.pregunta-intima .frase {
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+}
+.flor-sola {
+  width: 56px;
+  height: 56px;
+  margin: 0.5rem auto 1rem;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 1400ms ease, transform 1400ms ease, filter 1400ms ease;
+  filter: drop-shadow(0 0 12px rgba(242, 199, 68, 0.4));
+}
+.flor-sola.es-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.celebracion-si {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  overflow: hidden;
+}
+.celebracion-si__particula {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+}

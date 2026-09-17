@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donde comenzó todo — Flores Amarillas</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/galaxia.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+
+  <div class="fondo-galaxia" aria-hidden="true"></div>
+  <canvas class="lienzo-estrellas" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="../index.html" class="nav__marca">flores amarillas</a>
+    <button class="nav__hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__lista">
+      <li><a href="../index.html" class="nav__enlace">Inicio</a></li>
+      <li><a href="comienzo.html" class="nav__enlace" data-requiere-desbloqueo>Donde comenzó todo</a></li>
+      <li><a href="tiempo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro tiempo</a></li>
+      <li><a href="cambios.html" class="nav__enlace" data-requiere-desbloqueo>Lo que cambiaste en mí</a></li>
+      <li><a href="universo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro universo</a></li>
+      <li><a href="momentos.html" class="nav__enlace" data-requiere-desbloqueo>Nuestros momentos</a></li>
+      <li><a href="flores.html" class="nav__enlace" data-requiere-desbloqueo>Flores para ti 🌻</a></li>
+      <li><a href="cita.html" class="nav__enlace" data-requiere-desbloqueo>Nuestra cita</a></li>
+      <li><a href="pregunta.html" class="nav__enlace" data-requiere-desbloqueo>La pregunta ❤️</a></li>
+    </ul>
+  </nav>
+
+  <section class="seccion" id="momento-fecha">
+    <div class="seccion__contenido" style="text-align:center; align-items:center;">
+      <div class="fecha-destacada frase" style="text-align:center;">
+        <span class="fecha-destacada__dia">10 DE AGOSTO DE 2026</span>
+        <span class="fecha-destacada__hora">9:02 PM</span>
+      </div>
+
+      <p class="frase" style="transition-delay: 500ms; text-align:center; max-width:28ch;">
+        Quizás para el mundo solamente fue un mensaje más o quizá solo fueron las 9:02 de una noche cualquiera.....
+      </p>
+      <p class="frase" style="transition-delay: 1000ms; text-align:center; max-width:28ch;">
+        ...pero para mí terminó siendo el comienzo de algo especial.
+      </p>
+
+      <div class="noche-estrellada" id="noche-9-02" style="margin:1.75rem auto 0; width:100%; max-width:360px; height:110px;">
+        <div class="noche-estrellada__cielo" id="cielo-estrellas"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="momento-estrella">
+    <div class="seccion__contenido">
+      <svg class="estrella-ilustracion" id="estrella" viewBox="0 0 64 64" aria-hidden="true">
+        <path
+          fill="#f2c744"
+          d="M32 2 L37 27 L62 32 L37 37 L32 62 L27 37 L2 32 L27 27 Z"
+        />
+      </svg>
+
+      <!-- ✏️ EDITAR AQUÍ: frase final de esta sección. Se escribe
+           sola con efecto de máquina de escribir cuando la
+           estrella termina de encenderse. -->
+      <p class="frase-escrita" id="frase-final" aria-live="polite"></p>
+      <span class="frase-final-texto" hidden>
+        Desde ese primer mensaje, empezaste a hacer que una parte
+        de mí se volviera un poquito más romántica.
+      </span>
+
+      <a href="tiempo.html" class="boton boton--fantasma" id="enlace-continuar" style="opacity: 0; pointer-events: none; transition: opacity 900ms ease;">
+        CONTINUAR
+      </a>
+    </div>
+  </section>
+
+  <div class="reproductor">
+    <audio id="audio-musica" src="../audio/musica.mp3" loop preload="none"></audio>
+    <button class="reproductor__boton" aria-label="Reproducir o pausar música">▶</button>
+    <input class="reproductor__volumen" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Volumen" />
+  </div>
+
+  <footer class="pie">Hecho con paciencia, un poco de código y flores amarillas 🌻</footer>
+
+  <script src="../js/main.js"></script>
+
+  <!-- Script propio de esta página: enciende la estrella y dispara
+       el efecto de máquina de escribir. No se creó js/comienzo.js
+       aparte porque es lógica corta y exclusiva de esta página. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Llenar el cielo de estrellas después de las 9:02
+      const cielo = document.querySelector('#cielo-estrellas');
+      if (cielo) {
+        setTimeout(() => {
+          for (let i = 0; i < 28; i++) {
+            const e = document.createElement('span');
+            e.className = 'noche-estrellada__estrella-nueva';
+            e.style.left = Math.random() * 100 + '%';
+            e.style.top = Math.random() * 100 + '%';
+            e.style.animationDelay = (i * 0.12) + 's';
+            e.style.width = (1.5 + Math.random() * 2.5) + 'px';
+            e.style.height = e.style.width;
+            cielo.appendChild(e);
+          }
+        }, 1800);
+      }
+
+      const seccionEstrella = document.querySelector('#momento-estrella');
+      const estrella = document.querySelector('#estrella');
+      const fraseFinal = document.querySelector('#frase-final');
+      const textoFraseFinal = document.querySelector('.frase-final-texto').textContent.trim();
+      const enlaceContinuar = document.querySelector('#enlace-continuar');
+
+      if (!seccionEstrella || !estrella || !fraseFinal) return;
+
+      let yaSeReprodujo = false;
+
+      const observador = new IntersectionObserver(
+        (entradas) => {
+          entradas.forEach((entrada) => {
+            if (entrada.isIntersecting && !yaSeReprodujo) {
+              yaSeReprodujo = true;
+              reproducirSecuencia();
+              observador.unobserve(seccionEstrella);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observador.observe(seccionEstrella);
+
+      async function reproducirSecuencia() {
+        estrella.classList.add('es-encendida');
+        await esperar(1200);
+        await window.FloresAmarillas.escribirTexto(fraseFinal, textoFraseFinal, 40);
+        await esperar(400);
+        enlaceContinuar.style.opacity = '1';
+        enlaceContinuar.style.pointerEvents = 'auto';
+      }
+
+      function esperar(ms) {
+        return new Promise((resolver) => setTimeout(resolver, ms));
+      }
+    });
+  </script>
+</body>
+</html>

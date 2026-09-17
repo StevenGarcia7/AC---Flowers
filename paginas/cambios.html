@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lo que cambiaste en mí — Flores Amarillas</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/galaxia.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+
+  <div class="fondo-galaxia" aria-hidden="true"></div>
+  <canvas class="lienzo-estrellas" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="../index.html" class="nav__marca">flores amarillas</a>
+    <button class="nav__hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__lista">
+      <li><a href="../index.html" class="nav__enlace">Inicio</a></li>
+      <li><a href="comienzo.html" class="nav__enlace" data-requiere-desbloqueo>Donde comenzó todo</a></li>
+      <li><a href="tiempo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro tiempo</a></li>
+      <li><a href="cambios.html" class="nav__enlace" data-requiere-desbloqueo>Lo que cambiaste en mí</a></li>
+      <li><a href="universo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro universo</a></li>
+      <li><a href="momentos.html" class="nav__enlace" data-requiere-desbloqueo>Nuestros momentos</a></li>
+      <li><a href="flores.html" class="nav__enlace" data-requiere-desbloqueo>Flores para ti 🌻</a></li>
+      <li><a href="cita.html" class="nav__enlace" data-requiere-desbloqueo>Nuestra cita</a></li>
+      <li><a href="pregunta.html" class="nav__enlace" data-requiere-desbloqueo>La pregunta ❤️</a></li>
+    </ul>
+  </nav>
+
+  <section class="seccion" id="seccion-cambios">
+    <div class="seccion__contenido">
+
+      <div class="antes-despues" id="antes-despues">
+        <span class="antes-despues__estrella" style="top: 15%; left: 20%;"></span>
+        <span class="antes-despues__estrella" style="top: 30%; left: 70%;"></span>
+        <span class="antes-despues__estrella" style="top: 55%; left: 40%;"></span>
+        <span class="antes-despues__estrella" style="top: 70%; left: 15%;"></span>
+        <span class="antes-despues__estrella" style="top: 20%; left: 85%;"></span>
+        <span class="antes-despues__estrella" style="top: 45%; left: 10%;"></span>
+        <span class="antes-despues__estrella" style="top: 80%; left: 60%;"></span>
+        <span class="antes-despues__estrella" style="top: 10%; left: 50%;"></span>
+        <span class="antes-despues__estrella" style="top: 65%; left: 85%;"></span>
+        <span class="antes-despues__estrella" style="top: 35%; left: 30%;"></span>
+        <span class="antes-despues__estrella" style="top: 85%; left: 35%;"></span>
+        <span class="antes-despues__estrella" style="top: 25%; left: 55%;"></span>
+
+        <p class="antes-despues__texto" id="texto-antes">ANTES DE CONOCERTE...</p>
+        <p class="antes-despues__texto antes-despues__texto--despues" id="texto-despues">DESPUÉS DE TI...</p>
+      </div>
+
+      <!-- ✏️ EDITAR AQUÍ: las frases de esta sección -->
+      <p class="frase-secuencial" id="frase-nota-1">No sé si tú lo has notado...</p>
+      <p class="frase-secuencial" id="frase-nota-2">...pero desde que empezamos a hablar, descubrí una versión de mí que no solía mostrar.</p>
+      <p class="frase-secuencial frase-secuencial--enfasis" id="frase-nota-3">Una parte de mí se volvió más romántica.</p>
+
+      <canvas class="lienzo-corazon" id="lienzo-corazon" width="280" height="200" aria-hidden="true"></canvas>
+
+      <a href="universo.html" class="boton boton--fantasma" id="enlace-continuar-cambios" style="opacity: 0; pointer-events: none; transition: opacity 900ms ease;">
+        CONTINUAR
+      </a>
+    </div>
+  </section>
+
+    <div class="cinnamoroll cinnamoroll--esquina" id="cinnamoroll-easter" title="¿Qué es esto?">
+    <svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
+      <ellipse cx="32" cy="38" rx="18" ry="16" fill="#f5f5f5"/>
+      <ellipse cx="32" cy="28" rx="14" ry="13" fill="#ffffff"/>
+      <ellipse cx="18" cy="22" rx="7" ry="9" fill="#ffffff" transform="rotate(-25 18 22)"/>
+      <ellipse cx="46" cy="22" rx="7" ry="9" fill="#ffffff" transform="rotate(25 46 22)"/>
+      <circle cx="26" cy="27" r="2.2" fill="#2a2a2a"/>
+      <circle cx="38" cy="27" r="2.2" fill="#2a2a2a"/>
+      <ellipse cx="32" cy="32" rx="3" ry="2.2" fill="#f4a0b5"/>
+      <path d="M28 35 Q32 38 36 35" stroke="#2a2a2a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="14" cy="42" rx="5" ry="4" fill="#ffffff"/>
+      <ellipse cx="50" cy="42" rx="5" ry="4" fill="#ffffff"/>
+    </svg>
+    <span class="cinnamoroll__burbuja">Cambiaste mi forma de ver las cosas ☁️</span>
+  </div>
+
+  <div class="reproductor">
+    <audio id="audio-musica" src="../audio/musica.mp3" loop preload="none"></audio>
+    <button class="reproductor__boton" aria-label="Reproducir o pausar música">▶</button>
+    <input class="reproductor__volumen" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Volumen" />
+  </div>
+
+  <footer class="pie">Hecho con paciencia, un poco de código y flores amarillas 🌻</footer>
+
+  <script src="../js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const seccion = document.querySelector('#seccion-cambios');
+      if (!seccion) return;
+
+      let yaSeReprodujo = false;
+
+      const observador = new IntersectionObserver(
+        (entradas) => {
+          entradas.forEach((entrada) => {
+            if (entrada.isIntersecting && !yaSeReprodujo) {
+              yaSeReprodujo = true;
+              reproducirSecuencia();
+              observador.unobserve(seccion);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      observador.observe(seccion);
+
+      function esperar(ms) {
+        return new Promise((resolver) => setTimeout(resolver, ms));
+      }
+
+      async function reproducirSecuencia() {
+        const caja = document.querySelector('#antes-despues');
+        const textoAntes = document.querySelector('#texto-antes');
+        const textoDespues = document.querySelector('#texto-despues');
+        const frase1 = document.querySelector('#frase-nota-1');
+        const frase2 = document.querySelector('#frase-nota-2');
+        const frase3 = document.querySelector('#frase-nota-3');
+        const lienzoCorazon = document.querySelector('#lienzo-corazon');
+        const enlaceContinuar = document.querySelector('#enlace-continuar-cambios');
+
+        textoAntes.classList.add('es-visible');
+        await esperar(2600);
+
+        textoAntes.classList.remove('es-visible');
+        caja.classList.add('es-despues');
+        await esperar(300);
+        textoDespues.classList.add('es-visible');
+        await esperar(2400);
+
+        frase1.classList.add('es-visible');
+        await esperar(1600);
+        frase2.classList.add('es-visible');
+        await esperar(2200);
+        frase3.classList.add('es-visible');
+        await esperar(1200);
+
+        lienzoCorazon.classList.add('es-visible');
+        dibujarCorazonDeParticulas(lienzoCorazon);
+        await esperar(2200);
+
+        enlaceContinuar.style.opacity = '1';
+        enlaceContinuar.style.pointerEvents = 'auto';
+      }
+
+      function dibujarCorazonDeParticulas(lienzo) {
+        const contexto = lienzo.getContext('2d');
+        const ancho = lienzo.width;
+        const alto = lienzo.height;
+        const centroX = ancho / 2;
+        const centroY = alto / 2 + 12;
+        const escala = 6.5;
+        const cantidadPuntos = 90;
+        const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const particulas = [];
+        for (let i = 0; i < cantidadPuntos; i++) {
+          const t = (i / cantidadPuntos) * Math.PI * 2;
+          const hx = 16 * Math.pow(Math.sin(t), 3);
+          const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+
+          particulas.push({
+            x: Math.random() * ancho,
+            y: Math.random() * alto,
+            destinoX: centroX + hx * escala * 0.28,
+            destinoY: centroY + hy * escala * 0.28,
+            retraso: Math.random() * 500
+          });
+        }
+
+        if (prefiereMenosMovimiento) {
+          dibujarQuieto();
+          return;
+        }
+
+        let inicio = null;
+        const duracion = 1400;
+
+        function animarFormacion(marcaTiempo) {
+          if (!inicio) inicio = marcaTiempo;
+          const transcurrido = marcaTiempo - inicio;
+          contexto.clearRect(0, 0, ancho, alto);
+          contexto.fillStyle = '#f2c744';
+
+          let todasLlegaron = true;
+          particulas.forEach((p) => {
+            const progreso = Math.min(Math.max((transcurrido - p.retraso) / duracion, 0), 1);
+            if (progreso < 1) todasLlegaron = false;
+            const facilitado = 1 - Math.pow(1 - progreso, 3);
+            const x = p.x + (p.destinoX - p.x) * facilitado;
+            const y = p.y + (p.destinoY - p.y) * facilitado;
+
+            contexto.globalAlpha = 0.4 + 0.6 * progreso;
+            contexto.beginPath();
+            contexto.arc(x, y, 2.2, 0, Math.PI * 2);
+            contexto.fill();
+          });
+          contexto.globalAlpha = 1;
+
+          if (!todasLlegaron) {
+            requestAnimationFrame(animarFormacion);
+          } else {
+            requestAnimationFrame(animarTitileo);
+          }
+        }
+
+        function animarTitileo(marcaTiempo) {
+          contexto.clearRect(0, 0, ancho, alto);
+          contexto.fillStyle = '#f2c744';
+          particulas.forEach((p, indice) => {
+            const parpadeo = 0.65 + 0.35 * Math.sin(marcaTiempo * 0.0015 + indice);
+            contexto.globalAlpha = parpadeo;
+            contexto.beginPath();
+            contexto.arc(p.destinoX, p.destinoY, 2.2, 0, Math.PI * 2);
+            contexto.fill();
+          });
+          contexto.globalAlpha = 1;
+          requestAnimationFrame(animarTitileo);
+        }
+
+        function dibujarQuieto() {
+          contexto.clearRect(0, 0, ancho, alto);
+          contexto.fillStyle = '#f2c744';
+          particulas.forEach((p) => {
+            contexto.beginPath();
+            contexto.arc(p.destinoX, p.destinoY, 2.2, 0, Math.PI * 2);
+            contexto.fill();
+          });
+        }
+
+        requestAnimationFrame(animarFormacion);
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const c = document.querySelector('#cinnamoroll-easter');
+      if (c) {
+        c.addEventListener('click', () => {
+          c.classList.add('es-hablando');
+          setTimeout(() => c.classList.remove('es-hablando'), 3200);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

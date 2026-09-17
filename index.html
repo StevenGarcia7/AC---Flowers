@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flores Amarillas</title>
+  <meta name="description" content="Una pequeña historia, contada como un recorrido." />
+
+  <!---->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/galaxia.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Fondo  -->
+  <div class="fondo-galaxia" aria-hidden="true"></div>
+  <canvas class="lienzo-estrellas" aria-hidden="true"></canvas>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav__marca">flores amarillas</a>
+
+    <button class="nav__hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav__lista">
+      <li><a href="index.html" class="nav__enlace">Inicio</a></li>
+      <li><a href="paginas/comienzo.html" class="nav__enlace" data-requiere-desbloqueo>Donde comenzó todo</a></li>
+      <li><a href="paginas/tiempo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro tiempo</a></li>
+      <li><a href="paginas/cambios.html" class="nav__enlace" data-requiere-desbloqueo>Lo que cambiaste en mí</a></li>
+      <li><a href="paginas/universo.html" class="nav__enlace" data-requiere-desbloqueo>Nuestro universo</a></li>
+      <li><a href="paginas/momentos.html" class="nav__enlace" data-requiere-desbloqueo>Nuestros momentos</a></li>
+      <li><a href="paginas/flores.html" class="nav__enlace" data-requiere-desbloqueo>Flores para ti 🌻</a></li>
+      <li><a href="paginas/cita.html" class="nav__enlace" data-requiere-desbloqueo>Nuestra cita</a></li>
+      <li><a href="paginas/pregunta.html" class="nav__enlace" data-requiere-desbloqueo>La pregunta ❤️</a></li>
+    </ul>
+  </nav>
+
+  <!-- 1. INICIO — -->
+  <section class="seccion hero">
+    <div class="seccion__contenido">
+
+      <!-- Flor amarilla -->
+      <svg class="hero__flor con-brillo" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="#f2c744">
+          <circle cx="32" cy="18" r="9" />
+          <circle cx="46" cy="32" r="9" />
+          <circle cx="32" cy="46" r="9" />
+          <circle cx="18" cy="32" r="9" />
+        </g>
+        <circle cx="32" cy="32" r="8" fill="#d4af37" />
+      </svg>
+
+      <p class="frase">Para alguien que llegó<br />sin avisar...</p>
+      <p class="frase" style="transition-delay: 400ms;">...y terminó haciendo<br />mi mundo un poquito diferente.</p>
+
+      <a href="#desbloqueo" class="boton">COMENZAR</a>
+    </div>
+  </section>
+
+  <!-- 2. SISTEMA DE DESBLOQUEO -->
+  <section class="seccion" id="desbloqueo">
+    <div class="seccion__contenido">
+      <p class="frase">🔐 Hay algo aquí que solamente tú puedes desbloquear.</p>
+      <p class="desbloqueo__pregunta">¿Recuerdas cuándo comenzó todo?</p>
+
+      <div class="selector-fecha">
+        <div class="selector-fecha__grupo">
+          <span class="selector-fecha__etiqueta">DÍA</span>
+          <div class="selector-fecha__opciones" id="opciones-dia"></div>
+        </div>
+
+        <div class="selector-fecha__grupo">
+          <span class="selector-fecha__etiqueta">MES</span>
+          <div class="selector-fecha__opciones" id="opciones-mes"></div>
+        </div>
+
+        <div class="selector-fecha__grupo">
+          <span class="selector-fecha__etiqueta">AÑO</span>
+          <div class="selector-fecha__opciones" id="opciones-anio"></div>
+        </div>
+      </div>
+
+      <button class="boton" id="boton-desbloquear">DESBLOQUEAR</button>
+      <p class="desbloqueo__mensaje" id="mensaje-desbloqueo" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- REPRODUCTOR DE MÚSICA -->
+  
+  <div class="cinnamoroll cinnamoroll--esquina" id="cinnamoroll-easter" title="¿Qué es esto?">
+    <svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
+      <ellipse cx="32" cy="38" rx="18" ry="16" fill="#f5f5f5"/>
+      <ellipse cx="32" cy="28" rx="14" ry="13" fill="#ffffff"/>
+      <ellipse cx="18" cy="22" rx="7" ry="9" fill="#ffffff" transform="rotate(-25 18 22)"/>
+      <ellipse cx="46" cy="22" rx="7" ry="9" fill="#ffffff" transform="rotate(25 46 22)"/>
+      <circle cx="26" cy="27" r="2.2" fill="#2a2a2a"/>
+      <circle cx="38" cy="27" r="2.2" fill="#2a2a2a"/>
+      <ellipse cx="32" cy="32" rx="3" ry="2.2" fill="#f4a0b5"/>
+      <path d="M28 35 Q32 38 36 35" stroke="#2a2a2a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="14" cy="42" rx="5" ry="4" fill="#ffffff"/>
+      <ellipse cx="50" cy="42" rx="5" ry="4" fill="#ffffff"/>
+    </svg>
+    <span class="cinnamoroll__burbuja">Aquí empieza nuestro pequeño universo ☁️</span>
+  </div>
+
+  <div class="reproductor">
+    <audio id="audio-musica" src="audio/musica.mp3" loop preload="none"></audio>
+    <button class="reproductor__boton" aria-label="Reproducir o pausar música">▶</button>
+    <input class="reproductor__volumen" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Volumen" />
+  </div>
+
+  <footer class="pie">Hecho con paciencia, un poco de código y flores amarillas 🌻</footer>
+
+  <!-- Scripts: main.js --> 
+   
+  <script src="js/main.js"></script>
+  <script src="js/desbloqueo.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const c = document.querySelector('#cinnamoroll-easter');
+      if (c) {
+        c.addEventListener('click', () => {
+          c.classList.add('es-hablando');
+          setTimeout(() => c.classList.remove('es-hablando'), 3200);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
