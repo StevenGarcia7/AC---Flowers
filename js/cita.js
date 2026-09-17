@@ -1,9 +1,5 @@
 /* =========================================================
    CITA.JS
-   Controla "Nuestra cita" (paginas/cita.html). La persona
-   elige un plan con botones; el plan elegido se muestra en
-   una tarjeta. No se envía nada a ningún servidor — todo
-   ocurre en el navegador, con JavaScript puro.
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
