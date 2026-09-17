@@ -1,19 +1,6 @@
 /* =========================================================
    MOMENTOS.JS
-   Controla "Nuestros momentos" (paginas/momentos.html).
-
-   ✏️ PARA AGREGAR O EDITAR RECUERDOS:
-   Modifica el arreglo MOMENTOS de aquí abajo. Cada objeto es
-   un punto en la línea de tiempo. "fecha" y "hora" son
-   opcionales (déjalos como cadena vacía '' si no aplican,
-   como en "HOY"). El campo "detalle" es lo que se muestra al
-   hacer clic sobre el momento.
-
-   IMPORTANTE: los recuerdos de ejemplo de abajo son
-   placeholders. Reemplázalos por recuerdos reales antes de
-   compartir la página — no se debe inventar contenido sobre
-   la persona real.
-   ========================================================= */
+      ========================================================= */
 
 const MOMENTOS = [
   {
