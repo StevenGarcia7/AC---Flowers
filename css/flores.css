@@ -110,9 +110,7 @@
 
 /* ---------------------------------------------------------
    2. CENTRADO DE LAS DOS FASES
-   #fase-crecimiento y #fase-ramo son <div> normales; sin esto,
-   su contenido (el SVG, el botón, el contador) no queda
-   centrado como el resto de las secciones del sitio.
+   
    --------------------------------------------------------- */
 #fase-crecimiento,
 #fase-ramo {
@@ -124,11 +122,8 @@
 }
 
 /* ---------------------------------------------------------
-   3. EL RAMO
-   Nota: cada flor la crea flores.js como un <g> con su
-   posición puesta vía transform="translate(...)" (atributo
-   SVG) y aparece con "opacity" (estilo en línea) — nunca con
-   un transform de CSS, para no chocar con el translate.
+   3. RAMO
+
    --------------------------------------------------------- */
 .ramo {
   display: block;
