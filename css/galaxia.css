@@ -1,12 +1,9 @@
 /* =========================================================
    GALAXIA.CSS
-   Todo lo relacionado al fondo animado: el <canvas> de
-   estrellas (dibujado por js/main.js) y algunas partículas
-   doradas extra hechas solo con CSS para dar profundidad.
+   
    ========================================================= */
 
-/* El canvas de estrellas ocupa toda la pantalla, detrás del
-   contenido y detrás del degradado radial de .fondo-galaxia */
+
 .lienzo-estrellas {
   position: fixed;
   inset: 0;
@@ -16,9 +13,7 @@
   height: 100%;
 }
 
-/* Contenedor de partículas doradas flotantes (CSS puro).
-   Se agregan unos pocos <span> en el HTML con esta clase;
-   cada uno flota a una velocidad y posición distintas. */
+
 .particula {
   position: fixed;
   z-index: -1;
@@ -56,8 +51,7 @@
   }
 }
 
-/* Brillo suave alrededor de un elemento importante
-   (se usa con la clase utilitaria .con-brillo) */
+
 .con-brillo {
   filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
 }
