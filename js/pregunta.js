@@ -1,5 +1,5 @@
 /* =========================================================
-   PREGUNTA.JS — Versión íntima
+   PREGUNTA.JS
    ========================================================= */
 
 const MAX_INTENTOS_EVASION = 5;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   botonSi.addEventListener('click', seleccionarSi);
 
   async function iniciarSecuencia() {
-    // Reducir estrellas sutilmente (opacidad del canvas)
+    // Reducir estrellas 
     const lienzo = document.querySelector('.lienzo-estrellas');
     if (lienzo) lienzo.style.transition = 'opacity 3s ease';
     if (lienzo) lienzo.style.opacity = '0.35';
