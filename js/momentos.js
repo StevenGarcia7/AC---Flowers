@@ -19,7 +19,7 @@ const MOMENTOS = [
     fecha: '',
     hora: '',
     titulo: 'Nuestra primera salida',
-    detalle: 'Recuerdo mucho ese día. Estaba nervioso por conocerte en persona y, sobre todo, por no querer hacer algo mal con usted. A pesar de los nervios, fue un momento muy especial para mí y uno de esos recuerdos que quiero guardar siempre.'
+    detalle: 'Me gusta recordar mucho ese día. Estaba nervioso por conocerte en persona y sobre todo por no querer hacer algo mal con usted. A pesar de los nervios, fue un momento muy especial para mí y uno de esos recuerdos que quiero guardar siempre.'
   },
   {
     fecha: '',
