@@ -1,5 +1,5 @@
 /* =========================================================
-   PREGUNTA.JS — Declaración suave (sin presión)
+   PREGUNTA.JS 
    ========================================================= */
 
 const CLAVE_RESPUESTAS = 'flores-amarillas:respuestas';
