@@ -33,7 +33,7 @@
     </ul>
   </nav>
 
-  <section class="seccion">
+  <!-- <section class="seccion">
     <div class="seccion__contenido">
 
       <svg class="flor-sola" id="flor-sola" viewBox="0 0 64 64" aria-hidden="true">
@@ -91,7 +91,38 @@
         <a href="respuesta.html" class="boton">CONTINUAR NUESTRA HISTORIA</a>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  
+<section class="seccion">
+  <div class="seccion__contenido">
+
+    <svg class="flor-sola" id="flor-sola" viewBox="0 0 64 64" aria-hidden="true">
+      <g fill="#f2c744">
+        <circle cx="32" cy="18" r="9" />
+        <circle cx="46" cy="32" r="9" />
+        <circle cx="32" cy="46" r="9" />
+        <circle cx="18" cy="32" r="9" />
+      </g>
+      <circle cx="32" cy="32" r="8" fill="#d4af37" />
+    </svg>
+
+    <p class="frase" id="frase-1">Llegaste hasta aquí...</p>
+    <p class="frase" id="frase-2" style="transition-delay: 200ms;">Y después de estos días, solo quiero decirte algo:</p>
+    <p class="frase frase--enfasis" id="frase-3" style="transition-delay: 400ms; max-width: 34ch;">
+      Me gustas, me encanta seguir conociéndote y quiero seguir construyendo momentos contigo. ❤️
+    </p>
+    <p class="frase frase--pequena" id="frase-4" style="transition-delay: 600ms; max-width: 32ch;">
+      No quiero apresurarte. Solo quiero que sepas lo que siento por ti.
+    </p>
+
+    <a href="respuesta.html" class="boton" id="boton-continuar" style="opacity: 0; pointer-events: none; transition: opacity 900ms ease; margin-top: 0.5rem;">
+      Quiero seguir escribiendo nuestra historia ❤️
+    </a>
+
+  </div>
+</section>
+
 
   <div class="reproductor">
     <audio id="audio-musica" src="../audio/musica.mp3" loop preload="none"></audio>
