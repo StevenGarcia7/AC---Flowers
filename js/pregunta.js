@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function lanzarConfeti() {
     if (prefiereMenosMovimiento) return;
     const capa = celebracion || document.body;
-    const emojis = ['🌻', '❤️', '✨', '⭐', '💚', '💛'];
+    const emojis = ['🌻', '❤️', '✨', '⭐', '💚'];
     const colores = ['#f2c744', '#4a9c6d', '#d4af37', '#e8a4c0', '#7ec8a3'];
 
     for (let i = 0; i < 40; i++) {
